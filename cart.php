@@ -6,7 +6,6 @@ require_once "include/header.php";
 require_once "app/classes/Cart.php";
 
 
-
 if (!$user->is_logged()) {
     header("location: login.php");
     exit();
@@ -19,65 +18,73 @@ $cart_items = $cart->get_all_items();
 
 
 ?>
-<div class="overflow-x-auto h-full w-[700px] mx-auto flex justify-center items-center flex-col gap-2">
+<div class="overflow-x-auto h-full w-[700px] mx-auto flex justify-center items-center flex-col gap-2  ">
     <?php if (empty($cart_items)): ?>
 
+        <div role="alert" class="alert bg-gray-200 text-gray-700 flex justify-center items-center border-0">
 
-    <div role="alert" class="alert bg-gray-200 text-gray-900 flex justify-center items-center">
-
-        <span>Your cart is empty. Please add items to your cart.</span>
-    </div>
+            <span class="font-bold">Your cart is empty. Please add items to your cart.</span>
+        </div>
 
     <?php else: ?>
 
 
-    <table class="table border-2 border-solid border-gray-300">
-        <thead>
-            <tr class="text-gray-500 uppercase bg-slate-200">
-                <th>Product Name</th>
-                <th>Size</th>
-                <th>Price</th>
-                <th>Quantity</th>
-                <th>Image</th>
-            </tr>
-        </thead>
-        <tbody>
+
+        <div class="w-full flex justify-start mb-4 ">
+
+            <p class="text-gray-700 font-bold text-lg">Review your cart before proceeding to checkout:</p>
+        </div>
+
+        <table class="table border-2 border-solid border-gray-300 rounded-lg ">
+            <thead>
+                <tr class=" uppercase bg-gray-200 text-gray-800 text-base border-b-0 font-medium ">
+                    <th class="text-center">Product Name</th>
+                    <th class="text-center">Size</th>
+                    <th class="text-center">Price</th>
+                    <th class="text-center">Quantity</th>
+                    <th class="text-center">Image</th>
+                </tr>
+            </thead>
+            <tbody>
 
 
-            <?php foreach ($cart_items as $item): ?>
-            <tr>
+                <?php foreach ($cart_items as $item): ?>
+                    <tr class="text-gray-700 border-b-gray-300 border-2">
 
-                <td>
-                    <div class="flex items-center gap-3">
+                        <td>
+                            <div class=" flex items-center justify-center gap-3">
 
-                        <div>
-                            <div class="font-bold"><?= $item["name"] ?></div>
-                        </div>
-                    </div>
-                </td>
-                <td>
-                    <?= $item["size"] ?>
-                </td>
-                <td><?= $item["price"] ?> $</td>
-                <td><?= $item["quantity"] ?> </td>
-                <th>
-                    <div class="avatar">
-                        <div class="mask mask-squircle h-12 w-12">
-                            <img src="<?= $item["image"] ?>" alt="Avatar Tailwind CSS Component" />
-                        </div>
-                    </div>
-                </th>
-            </tr>
+                                <div class="text-center">
+                                    <div class="font-bold"><?= $item["name"] ?></div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="text-center">
+                            <?= $item["size"] ?>
+                        </td>
+                        <td class="text-center"><?= $item["price"] ?> $</td>
+                        <td class="text-center"><?= $item["quantity"] ?> </td>
+                        <th>
+                            <div class="avatar">
+                                <div class="mask mask-squircle h-12 w-12">
+                                    <img src="public/images/product_images/<?= $item["image"] ?>" alt="product" />
 
-            <?php endforeach; ?>
+                                </div>
+                            </div>
+                        </th>
+                    </tr>
+
+                <?php endforeach; ?>
 
 
-        </tbody>
+            </tbody>
 
-    </table>
+        </table>
+        <div class="w-full flex justify-end mt-4 ">
 
-    <a href="checkout.php" class="btn btn-primary">Checkout </a>
-</div>
+            <a href="checkout.php" class="btn btn-success uppercase ">Checkout </a>
+        </div>
+    </div>
 
 <?php endif; ?>
 
