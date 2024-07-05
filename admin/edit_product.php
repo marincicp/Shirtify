@@ -34,6 +34,8 @@ if ($user->is_logged() && $user->is_admin()) {
 
 
 
+require_once "include/footer.php";
+
 
 
 

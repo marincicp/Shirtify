@@ -21,7 +21,6 @@ class User
         $run->bind_param("ssss", $name, $username, $hashed_password, $email);
         $result = $run->execute();
 
-        var_dump($result);
 
         if ($result) {
 
@@ -42,7 +41,6 @@ class User
 
         if ($res->num_rows == 1) {
             $user = $res->fetch_assoc();
-            var_dump($user);
 
 
             if (password_verify($password, $user["password"])) {

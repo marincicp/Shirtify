@@ -21,7 +21,6 @@ if ($user->is_logged() && $user->is_admin()) {
         $size = $_POST["size"];
         $image = $_POST["photo_path"];
 
-        var_dump($_POST["photo_path"]);
         $product->create($name, $price, $size, $image);
 
         header("location: index.php");
@@ -99,28 +98,32 @@ if ($user->is_logged() && $user->is_admin()) {
 
 <script src=" https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
 <script>
-    Dropzone.options.dropzoneUpload = {
-        url: "upload_photo.php",
-        paramName: "photo",
-        maxFilesize: 20, // MB
-        acceptedFiles: "image/*",
-        init: function () {
-            this.on("success", function (file, response) {
-                const jsonResponse = JSON.parse(response);
+Dropzone.options.dropzoneUpload = {
+    url: "upload_photo.php",
+    paramName: "photo",
+    maxFilesize: 20, // MB
+    acceptedFiles: "image/*",
+    init: function() {
+        this.on("success", function(file, response) {
+            const jsonResponse = JSON.parse(response);
 
 
-                console.log("jsonResponse", fiel, response)
+            console.log("jsonResponse", fiel, response)
 
-                if (jsonResponse.success) {
+            if (jsonResponse.success) {
 
-                    document.querySelector("#photoPathInput").value = jsonResponse.photo.path;
+                document.querySelector("#photoPathInput").value = jsonResponse.photo.path;
 
-                } else {
+            } else {
 
-                    console.error(jsonResponse.error)
-                }
+                console.error(jsonResponse.error)
+            }
 
-            })
-        }
-    };
+        })
+    }
+};
 </script>
+
+<?php
+require_once "include/footer.php";
+?>

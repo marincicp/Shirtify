@@ -13,7 +13,7 @@ $products = new Product();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shop</title>
+    <title>Shirtify</title>
     <link href="./public/css/style.css" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
@@ -25,15 +25,15 @@ $products = new Product();
     <div class="navbar bg-base-100">
         <div class="navbar-start">
             <div class="dropdown">
-                <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+                <div tabindex="0" role="button" class="btn btn-ghost ">
 
-                    Shirtify
+
+                    <a href="index.php" class="btn btn-ghost text-xl">Shirtify</a>
                 </div>
 
             </div>
-            <a href="index.php" class="btn btn-ghost text-xl">Shop</a>
         </div>
-        <div class="navbar-end hidden lg:flex">
+        <div class="navbar-end  flex">
             <ul class="menu menu-horizontal px-1">
                 <?php if (!$user->is_logged()): ?>
                     <li><a href='register.php'>Register</a></li>

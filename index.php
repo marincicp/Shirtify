@@ -11,7 +11,7 @@ $products = $products->get_all_products();
 ?>
 
 
-<div class="min-h-full bg-gray-200 flex flex-wrap justify-between p-6 gap-6">
+<div class="min-h-full bg-gray-200 flex flex-wrap lg:justify-around p-6 gap-6 justify-center">
 
     <?php foreach ($products as $product): ?>
 

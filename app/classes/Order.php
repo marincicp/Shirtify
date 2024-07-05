@@ -20,7 +20,6 @@ class Order extends Cart
     public function create_order($delivery_address)
     {
 
-        var_dump($delivery_address);
 
         $sql = "INSERT INTO orders (user_id, delivery_address) VALUES (?,?)";
 

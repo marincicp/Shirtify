@@ -18,7 +18,8 @@ $cart_items = $cart->get_all_items();
 
 
 ?>
-<div class="overflow-x-auto h-full w-[700px] mx-auto flex justify-center items-center flex-col gap-2  ">
+<div
+    class="overflow-x-auto h-full w-full sm:w-5/6 lg:w-[700px] mx-auto flex justify-center items-center flex-col gap-2 p-4 ">
     <?php if (empty($cart_items)): ?>
 
         <div role="alert" class="alert bg-gray-200 text-gray-700 flex justify-center items-center border-0">
@@ -64,9 +65,9 @@ $cart_items = $cart->get_all_items();
                         </td>
                         <td class="text-center"><?= $item["price"] ?> $</td>
                         <td class="text-center"><?= $item["quantity"] ?> </td>
-                        <th>
+                        <th class="flex justify-center">
                             <div class="avatar">
-                                <div class="mask mask-squircle h-12 w-12">
+                                <div class="mask mask-squircle h-12 w-12 ">
                                     <img src="public/images/product_images/<?= $item["image"] ?>" alt="product" />
 
                                 </div>

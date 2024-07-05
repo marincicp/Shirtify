@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 
     $res = $user->login($username, $password);
-
+    $is_admin = $user->is_admin();
 
 
     if (!$res) {
@@ -34,7 +34,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         exit();
     }
 
-    header("location: index.php");
+
+
+    if ($is_admin) {
+
+        header("location: admin/index.php");
+    } else {
+        header("location: index.php");
+
+
+    }
     exit();
 }
 
@@ -48,7 +57,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <div class="border-gray-200 border-solid border-2 w-[500px] p-4 rounded-lg	">
 
         <div class="sm:mx-auto sm:w-full sm:max-w-sm  ">
-            <h2 class=" text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Welcome Back</h2>
+            <h2 class=" text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Welcome back to Shirtfy
+            </h2>
         </div>
 
         <div class="mt-4 sm:mx-auto sm:w-full sm:max-w-sm ">
